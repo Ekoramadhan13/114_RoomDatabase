@@ -1,4 +1,5 @@
-package com.example.tugas8.uicontroller
+package com.example.tugas8.view
+
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -33,11 +33,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.tugas8.room.Siswa
-import com.example.tugas8.view.DestinasiHome
-import com.example.tugas8.viewmodel.HomeViewModel
-import com.example.tugas8.viewmodel.PenyediaViewModel
 import com.example.tugas8.R
+import com.example.tugas8.room.Siswa
+import com.example.tugas8.view.route.DestinasiHome
+import com.example.tugas8.viewmodel.HomeViewModel
+import com.example.tugas8.viewmodel.provider.PenyediaViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -71,7 +71,7 @@ fun HomeScreen(
         },
     ){
             innerPadding ->
-        val uiStateSiswa by viewModel.homeUiState.collectAsState()
+        val uiStateSiswa by viewModel.homeViewModel.collectAsState()
         BodyHome(
             itemSiswa = uiStateSiswa.listSiswa,
             modifier = Modifier
@@ -79,16 +79,6 @@ fun HomeScreen(
                 .fillMaxSize()
         )
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SiswaTopAppBar(
-    title: String,
-    canNavigateBack: Boolean,
-    scrollBehavior: TopAppBarScrollBehavior
-) {
-    TODO("Not yet implemented")
 }
 
 @Composable

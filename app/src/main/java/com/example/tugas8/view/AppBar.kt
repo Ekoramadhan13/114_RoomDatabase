@@ -1,4 +1,5 @@
-package com.example.tugas8.uicontroller
+package com.example.tugas8.view
+
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -22,8 +23,7 @@ fun SiswaTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
 ) {
-    CenterAlignedTopAppBar(
-        title = { Text(title) },
+    CenterAlignedTopAppBar(title = { Text(title) },
         modifier = modifier,
         scrollBehavior = scrollBehavior,
         navigationIcon = {
@@ -35,6 +35,5 @@ fun SiswaTopAppBar(
                     )
                 }
             }
-        }
-    )
+        })
 }

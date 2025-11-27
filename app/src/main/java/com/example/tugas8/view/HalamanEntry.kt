@@ -1,4 +1,5 @@
-package com.example.tugas8.uicontroller
+package com.example.tugas8.view
+
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,13 +24,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.tugas8.R
+import com.example.tugas8.view.route.DestinasiEntry
 import com.example.tugas8.viewmodel.DetailSiswa
 import com.example.tugas8.viewmodel.EntryViewModel
 import com.example.tugas8.viewmodel.UIStateSiswa
-import com.example.tugas8.viewmodel.PenyediaViewModel
-import com.example.tugas8.view.DestinasiEntry
-import com.example.tugas8.R
+import com.example.tugas8.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,10 +54,10 @@ fun EntrySiswaScreen(
         }) { innerPadding ->
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
-            onSiswaValueChange = viewModel::updateUIState,
+            onSiswaValueChange = viewModel::updateUiState,
             onSaveClick = {
                 coroutineScope.launch {
-                    viewModel.insertSiswa()
+                    viewModel.saveSiswa()
                     navigateBack()
                 }
             },

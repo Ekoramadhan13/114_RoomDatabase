@@ -1,4 +1,4 @@
-package com.example.tugas8.uicontroller
+package com.example.tugas8.view.uicontroller
 
 
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -8,13 +8,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.tugas8.view.DestinasiNavigasi
-import com.example.tugas8.view.DestinasiHome
-import com.example.tugas8.view.DestinasiEntry
+import com.example.tugas8.view.EntrySiswaScreen
+import com.example.tugas8.view.HomeScreen
+import com.example.tugas8.view.route.DestinasiEntry
+import com.example.tugas8.view.route.DestinasiHome
 
 @Composable
-fun SiswaApp(navController: NavHostController = rememberNavController(),
-             modifier: Modifier){
+fun SiswaApp(navController: NavHostController = rememberNavController(), modifier: Modifier){
     HostNavigasi(navController = navController)
 }
 
@@ -24,17 +24,16 @@ fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ){
-    NavHost(navController = navController, startDestination = DestinasiHome.route
-        , modifier = Modifier)
+    NavHost(navController=navController, startDestination = DestinasiHome.route, modifier = Modifier)
     {
         composable(DestinasiHome.route){
             HomeScreen(
-                navigateToItemEntry = { navController.navigate(DestinasiEntry
-                    .route)},
+                navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
             )
         }
         composable(DestinasiEntry.route){
             EntrySiswaScreen(navigateBack = { navController.popBackStack()})
         }
+
     }
 }

@@ -1,4 +1,4 @@
-package com.example.tugas8.view
+package com.example.tugas8.view.route
 
 interface DestinasiNavigasi {
 

@@ -7,40 +7,39 @@ import androidx.lifecycle.ViewModel
 import com.example.tugas8.repositori.RepositoriSiswa
 import com.example.tugas8.room.Siswa
 
-class EntryViewModel(private val repository: RepositoriSiswa) : ViewModel() {
+class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() {
 
-    // Menyimpan state input UI
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
         private set
 
-    // Validasi input (jangan sampai ada yang kosong)
-    private fun validasiInput(): Boolean {
-        return with(uiStateSiswa.detailSiswa) {
+    private fun validasiInput(
+        uiState: DetailSiswa = uiStateSiswa
+            .detailSiswa
+    ): Boolean {
+        return with(uiState) {
             nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
         }
     }
 
-    // Update state saat user mengetik di form
-    fun updateUIState(detail: DetailSiswa) {
+    fun updateUiState(detailSiswa: DetailSiswa) {
         uiStateSiswa = UIStateSiswa(
-            detailSiswa = detail,
-            isEntryValid = validasiInput()
+            detailSiswa = detailSiswa,
+            isEntryValid = validasiInput(detailSiswa)
         )
     }
 
-    // Simpan data ke database Room
-    suspend fun insertSiswa() {
+    suspend fun saveSiswa() {
         if (validasiInput()) {
-            repository.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
+            repositoriSiswa.insertSiswa(
+                uiStateSiswa
+                    .detailSiswa.toSiswa())
         }
     }
 }
 
-// -------- STATE UI --------
-
 data class UIStateSiswa(
     val detailSiswa: DetailSiswa = DetailSiswa(),
-    val isEntryValid: Boolean = false
+    val isEntryValid: Boolean =  false
 )
 
 data class DetailSiswa(
@@ -50,8 +49,19 @@ data class DetailSiswa(
     val telpon: String = ""
 )
 
-// Konversi dari input UI ke entity table di Room
 fun DetailSiswa.toSiswa(): Siswa = Siswa(
+    id = id,
+    nama = nama,
+    alamat = alamat,
+    telpon = telpon
+)
+
+fun Siswa.toUiStateSiswa(isEntryValid: Boolean = false): UIStateSiswa = UIStateSiswa(
+    detailSiswa = this.toDetailSiswa(),
+    isEntryValid = isEntryValid
+)
+
+fun Siswa.toDetailSiswa(): DetailSiswa = DetailSiswa(
     id = id,
     nama = nama,
     alamat = alamat,
