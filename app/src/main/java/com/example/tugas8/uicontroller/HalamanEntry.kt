@@ -28,7 +28,7 @@ import com.example.tugas8.viewmodel.DetailSiswa
 import com.example.tugas8.viewmodel.EntryViewModel
 import com.example.tugas8.viewmodel.UIStateSiswa
 import com.example.tugas8.viewmodel.PenyediaViewModel
-import com.example.tugas8.view.route.DestinasiEntry
+import com.example.tugas8.view.DestinasiEntry
 import com.example.tugas8.R
 import kotlinx.coroutines.launch
 

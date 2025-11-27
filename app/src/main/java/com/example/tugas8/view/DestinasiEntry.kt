@@ -1,7 +1,6 @@
-package com.example.tugas8.view.route
+package com.example.tugas8.view
 
 import com.example.tugas8.R
-import com.example.tugas8.view.route.DestinasiNavigasi
 
 object DestinasiEntry: DestinasiNavigasi {
     override val route = "item_entry"

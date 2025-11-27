@@ -34,7 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tugas8.room.Siswa
-import com.example.tugas8.view.route.DestinasiHome
+import com.example.tugas8.view.DestinasiHome
 import com.example.tugas8.viewmodel.HomeViewModel
 import com.example.tugas8.viewmodel.PenyediaViewModel
 import com.example.tugas8.R
