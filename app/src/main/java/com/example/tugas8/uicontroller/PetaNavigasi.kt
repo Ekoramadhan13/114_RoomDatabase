@@ -8,9 +8,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.tugas8.view.DestinasiNavigasi
-import com.example.tugas8.view.DestinasiHome
-import com.example.tugas8.view.DestinasiEntry
+import com.example.tugas8.view.route.DestinasiNavigasi
+import com.example.tugas8.view.route.DestinasiHome
+import com.example.tugas8.view.route.DestinasiEntry
 
 @Composable
 fun SiswaApp(navController: NavHostController = rememberNavController(),
