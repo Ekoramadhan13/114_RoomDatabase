@@ -1,6 +1,6 @@
-package com.example.myroomsiswa.view.route
+package com.example.tugas8.view.route
 
-import com.example.myroomsiswa.R
+import com.example.tugas8.R
 
 object DestinasiDetailSiswa : DestinasiNavigasi {
     override val route = "detail_siswa"
