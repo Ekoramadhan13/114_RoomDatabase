@@ -1,10 +1,10 @@
-package com.example.myroomsiswa.viewmodel
+package com.example.tugas8.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myroomsiswa.repositori.RepositoriSiswa
-import com.example.myroomsiswa.view.route.DestinasiDetailSiswa
+import com.example.tugas8.repositori.RepositoriSiswa
+import com.example.tugas8.view.route.DestinasiDetailSiswa
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterNotNull
