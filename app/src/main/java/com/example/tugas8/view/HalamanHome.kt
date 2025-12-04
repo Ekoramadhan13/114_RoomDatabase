@@ -1,6 +1,7 @@
 package com.example.tugas8.view
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -43,7 +44,7 @@ import com.example.tugas8.viewmodel.provider.PenyediaViewModel
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
-    navigateToItemUpdate: () -> Unit,
+    navigateToItemUpdate: (Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
@@ -119,7 +120,8 @@ fun ListSiswa(
                 person ->  DataSiswa(
             siswa = person,
             modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.padding_small)))
+                .padding(dimensionResource(id = R.dimen.padding_small))
+                .clickable{onSiswaClick(person)})
         }
     }
 }
