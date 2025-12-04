@@ -1,5 +1,6 @@
 package com.example.tugas8.view.uicontroller
 
+
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,7 +14,6 @@ import com.example.tugas8.view.DetailSiswaScreen
 import com.example.tugas8.view.EntrySiswaScreen
 import com.example.tugas8.view.HomeScreen
 import com.example.tugas8.view.route.DestinasiDetailSiswa
-import com.example.tugas8.view.route.DestinasiDetailSiswa.itemIdArg
 import com.example.tugas8.view.route.DestinasiEntry
 import com.example.tugas8.view.route.DestinasiHome
 
@@ -43,20 +43,16 @@ fun HostNavigasi(
         }
 
         composable(route = DestinasiDetailSiswa.routeWithArgs,
-            arguments = listOf(navArgument(itemIdArg) {
+            arguments = listOf(navArgument(DestinasiDetailSiswa.itemIdArg){
                 type = NavType.IntType
             })
         ){
             DetailSiswaScreen(
-                navigateToEditItem = { navController.navigate("${DestinasiEditSiswa.route}/$it") },
-                navigateBack = { navController.navigateUp() })
+                navigateBack = {navController.navigateUp()},
+
+                )
         }
-        composable(route = DestinasiEditSiswa.routeWithArgs, arguments = listOf(navArgument(itemIdArg) {
-            type = NavType.IntType
-        })){
-            EditSiswaScreen(
-                navigateBack = {navController.popBackStack()},
-                onNavigateUp = {navController.navigateUp()})
-        }
+
+
     }
 }
