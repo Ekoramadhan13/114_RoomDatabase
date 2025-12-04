@@ -1,6 +1,7 @@
 package com.example.tugas8.room
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -13,4 +14,11 @@ interface SiswaDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(siswa: Siswa)
+
+    @Query(value = "SELECT * FROM tblSiswa WHERE id = :id")
+    fun getSiswa(id: Int): Flow<Siswa>
+
+    @Delete
+    suspend fun delete(siswa: Siswa)
 }
+
